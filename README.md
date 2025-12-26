@@ -1,11 +1,3 @@
-Got it 👍
-Here is **everything combined into ONE single file** — exactly what you should paste into **`README.md`** at the root of your repo.
-
-No explanations, no extra text. Just the final file 👇
-
----
-
-```md
 # Event Logging System (Spring Boot + MongoDB)
 
 A Spring Boot backend application that manages employees and automatically records
