@@ -26,12 +26,12 @@ public class EmployeeController {
         return employeeService.getAllEmployees();
     }
 
-//    get employee by id
-//    @GetMapping("/{id}")
-//    public Employee getEmployeeById(@PathVariable String id)
-//    {
-//        return employeeService.getEmployeeById(id);
-//    }
+    //get employee by id
+    @GetMapping("/{id}")
+    public Employee getEmployeeById(@PathVariable String id)
+    {
+        return employeeService.getEmployeeById(id);
+    }
 
      //update employee
     @PutMapping("/{id}")

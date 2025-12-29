@@ -1,5 +1,6 @@
 package com.example.auditdemo.service;
 
+import com.example.auditdemo.exception.ResourceNotFoundException;
 import com.example.auditdemo.model.Employee;
 import com.example.auditdemo.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +33,10 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
     //read by id
-    public Employee updateEmployee(String id)
+    public Employee getEmployeeById(String id)
     {
-        return employeeRepository.findById(id).orElseThrow(()->new RuntimeException("Employee not found"));
+        return employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + id));
+
     }
 
     //update
@@ -42,7 +44,8 @@ public class EmployeeService {
 
         // 1. Fetch existing employee (ensures ID exists)
         Employee existingEmployee = employeeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Employee not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + id));
+
 
         // 2. Update fields
         existingEmployee.setName(updatedEmployee.getName());
