@@ -3,10 +3,8 @@ package com.example.auditdemo.controller;
 import com.example.auditdemo.model.AuditLog;
 import com.example.auditdemo.service.AuditLogService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,6 +39,16 @@ public class AuditLogController {
     public List<AuditLog> getAuditLogsByDate(@PathVariable String date)
     {
         return auditLogService.getAuditLogsByDate(date);
+    }
+
+    @GetMapping("/page")
+    public Page<AuditLog> getAuditLogsWithPagination(
+            @RequestParam int page,
+            @RequestParam int size,
+            @RequestParam(defaultValue = "timestamp") String sortBy,
+            @RequestParam(defaultValue = "desc") String direction
+    ){
+        return auditLogService.getAuditLogsPaged(page, size, sortBy, direction);
     }
 
 
