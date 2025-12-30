@@ -152,14 +152,7 @@ Each audit log contains:
 
 ---
 
-## 🔮 Future Improvements
 
-* Add `GET /audit-logs` API
-* JWT-based authentication
-* Role-based audit logging
-* Spring AOP for automatic logging
-* Pagination and filtering
-* Global exception handling
 
 ---
 
